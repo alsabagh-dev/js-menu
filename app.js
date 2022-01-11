@@ -75,6 +75,8 @@ const menu = [
 
 // select conatiner
 const conatiner = document.querySelector('.section-center');
+// select filter buttons
+const filterBtns = document.querySelectorAll('.filter-btn')
 
 // Menu item template
 const generateMenuItem = (item) => {
@@ -109,4 +111,11 @@ const populateMenu = (filter) => {
 // initial population
 window.addEventListener('DOMContentLoaded', () => {
   populateMenu('all');
+});
+
+// populate filtered
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', ()=>{
+    populateMenu(btn.dataset.category);
+  });
 });
