@@ -94,10 +94,19 @@ const generateMenuItem = (item) => {
 }
 
 // populate the menu
-window.addEventListener('DOMContentLoaded', () => {
+const populateMenu = (filter) => {
   let displayMenu = menu.map((item) => {
-    return generateMenuItem(item);
+    if(filter === 'all'  || item.category === filter){
+      return generateMenuItem(item);
+    }else{
+      return '';
+    }
   })
   displayMenu = displayMenu.join('');
   conatiner.innerHTML = displayMenu;
+}
+
+// initial population
+window.addEventListener('DOMContentLoaded', () => {
+  populateMenu('all');
 });
