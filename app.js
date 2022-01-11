@@ -72,9 +72,25 @@ const menu = [
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
+const categories = ['all',...new Set(menu.map((item) => item.category))];
 
 // select conatiner
 const conatiner = document.querySelector('.section-center');
+// select filter buttons container
+const btnContainer = document.querySelector('.btn-container');
+
+// filter button template
+const generateFilterBtn = (category) => {
+  return`<button class="filter-btn" type="button" data-category='${category}' >${category}</button>
+  `;
+}
+
+// populate filter buttons conatainer
+(() => {
+  const btns = categories.map((category) => generateFilterBtn(category));
+  btnContainer.innerHTML = btns.join('');
+})()
+
 // select filter buttons
 const filterBtns = document.querySelectorAll('.filter-btn')
 
